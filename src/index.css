@@ -1,0 +1,314 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Who Wants to Be a Millionaire Color Scheme */
+    --background: 220 40% 8%; /* Dark blue background */
+    --foreground: 0 0% 100%; /* Pure white text */
+    --card: 220 35% 12%; /* Slightly lighter blue for cards */
+    --card-foreground: 0 0% 100%; /* Pure white text */
+    --popover: 220 35% 12%;
+    --popover-foreground: 0 0% 100%; /* Pure white text */
+    --primary: 45 100% 50%; /* Bright gold */
+    --primary-foreground: 220 30% 8%;
+    --secondary: 220 20% 15%;
+    --secondary-foreground: 0 0% 100%; /* Pure white text */
+    --muted: 220 15% 20%;
+    --muted-foreground: 0 0% 75%; /* Light gray text */
+    --accent: 45 100% 60%; /* Bright gold accent */
+    --accent-foreground: 220 30% 8%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Custom WWTBAM Variables */
+    --millionaire-blue: 220 40% 8%;
+    --millionaire-blue-light: 220 35% 15%;
+    --millionaire-gold: 45 100% 50%;
+    --millionaire-gold-light: 45 100% 65%;
+    --millionaire-gold-dark: 45 100% 35%;
+    --correct-green: 120 60% 40%;
+    --incorrect-red: 0 70% 50%;
+    --answer-hover: 220 30% 20%;
+
+    /* Standard Tailwind Variables */
+    --border: 45 100% 30%; /* Gold border */
+    --input: 220 35% 15%; /* Dark blue input background */
+    --ring: 45 100% 50%; /* Gold focus ring */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--millionaire-blue)) 0%,
+      hsl(var(--millionaire-blue-light)) 50%,
+      hsl(var(--millionaire-blue)) 100%
+    );
+    color: hsl(var(--foreground));
+    min-height: 100vh;
+    font-family: "Arial", sans-serif;
+  }
+}
+
+/* Who Wants to Be a Millionaire Custom Styles */
+@layer components {
+  .millionaire-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--millionaire-blue)) 0%,
+      hsl(var(--millionaire-blue-light)) 50%,
+      hsl(var(--millionaire-blue)) 100%
+    );
+  }
+
+  .millionaire-card {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--millionaire-blue-light)) 0%,
+      hsl(var(--millionaire-blue)) 100%
+    );
+    border: 1px solid hsl(var(--millionaire-gold) / 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .millionaire-title {
+    color: hsl(var(--millionaire-gold));
+    font-weight: 700;
+  }
+
+  .millionaire-prize {
+    color: hsl(var(--millionaire-gold));
+    font-weight: 600;
+  }
+
+  .millionaire-button {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--millionaire-gold-dark)) 0%,
+      hsl(var(--millionaire-gold)) 50%,
+      hsl(var(--millionaire-gold-light)) 100%
+    );
+    color: hsl(var(--millionaire-blue));
+    border: 2px solid hsl(var(--millionaire-gold));
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    transition: all 0.3s ease;
+  }
+
+  .millionaire-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(
+      135deg,
+      hsl(var(--millionaire-gold)) 0%,
+      hsl(var(--millionaire-gold-light)) 50%,
+      hsl(var(--millionaire-gold-dark)) 100%
+    );
+  }
+
+  .millionaire-button-correct {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--correct-green)) 0%,
+      hsl(var(--correct-green) / 0.8) 100%
+    ) !important;
+    border-color: hsl(var(--millionaire-gold)) !important;
+    box-shadow: 0 0 30px hsl(var(--correct-green) / 0.5) !important;
+  }
+
+  .millionaire-button-incorrect {
+    background: linear-gradient(
+      145deg,
+      hsl(var(--incorrect-red)) 0%,
+      hsl(var(--incorrect-red) / 0.8) 100%
+    ) !important;
+    border-color: hsl(var(--millionaire-gold)) !important;
+    box-shadow:
+      0 0 30px hsl(var(--incorrect-red) / 0.5),
+      inset 0 1px 0 hsl(var(--millionaire-gold) / 0.3) !important;
+  }
+
+  .millionaire-button-selected {
+    background: linear-gradient(
+      145deg,
+      hsl(var(--millionaire-gold) / 0.3) 0%,
+      hsl(var(--millionaire-gold) / 0.1) 100%
+    ) !important;
+    border-color: hsl(var(--millionaire-gold)) !important;
+    box-shadow:
+      0 0 25px hsl(var(--millionaire-gold) / 0.4),
+      inset 0 1px 0 hsl(var(--millionaire-gold) / 0.3) !important;
+  }
+
+  .millionaire-title {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--millionaire-gold)) 0%,
+      hsl(var(--millionaire-gold-light)) 50%,
+      hsl(var(--millionaire-gold)) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px hsl(var(--millionaire-gold) / 0.5);
+    font-weight: bold;
+  }
+
+  .millionaire-prize {
+    color: hsl(var(--millionaire-gold));
+    text-shadow:
+      0 0 10px hsl(var(--millionaire-gold) / 0.5),
+      0 0 20px hsl(var(--millionaire-gold) / 0.3);
+    font-weight: bold;
+  }
+
+  .millionaire-timer {
+    color: hsl(var(--millionaire-gold));
+    text-shadow: 0 0 15px hsl(var(--millionaire-gold) / 0.6);
+  }
+
+  .millionaire-timer-danger {
+    color: hsl(var(--incorrect-red));
+    text-shadow: 0 0 15px hsl(var(--incorrect-red) / 0.8);
+    animation: pulse-red 1s infinite;
+  }
+
+  @keyframes pulse-red {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .millionaire-glow {
+    box-shadow:
+      0 0 20px hsl(var(--millionaire-gold) / 0.3),
+      0 0 40px hsl(var(--millionaire-gold) / 0.1),
+      inset 0 1px 0 hsl(var(--millionaire-gold) / 0.2);
+  }
+
+  .millionaire-question {
+    background: linear-gradient(
+      145deg,
+      hsl(var(--card)) 0%,
+      hsl(var(--millionaire-blue-light)) 100%
+    );
+    border: 2px solid hsl(var(--millionaire-gold) / 0.4);
+    box-shadow:
+      0 8px 32px hsl(var(--millionaire-blue) / 0.4),
+      inset 0 1px 0 hsl(var(--millionaire-gold) / 0.1);
+  }
+}
+
+/* Theme variables removed - using standard CSS custom properties instead */
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+    outline-color: hsl(var(--ring) / 0.5);
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
