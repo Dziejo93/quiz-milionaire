@@ -107,8 +107,17 @@ export const mockQuizData = {
 // Create domain entities from mock data
 export function createMockQuiz(): Quiz {
   const questions = mockQuizData.questions.map((q) => {
-    const answers = q.answers.map((a) => new Answer(a.id, a.text, a.isCorrect));
-    return new Question(q.id, q.quizId, q.text, q.type, answers, q.order, q.timeLimit);
+    const answers = q.answers.map((a, index) => new Answer(a.id, a.text, String.fromCharCode(65 + index)));
+    const correctAnswer = q.answers.find(a => a.isCorrect);
+    return new Question(
+      q.id,
+      q.text,
+      q.type as QuestionType,
+      answers,
+      correctAnswer?.id || q.answers[0].id,
+      q.order,
+      q.timeLimit
+    );
   });
 
   return new Quiz(
@@ -117,9 +126,9 @@ export function createMockQuiz(): Quiz {
     mockQuizData.description,
     questions,
     mockQuizData.prizeLevels,
+    new Date(mockQuizData.createdAt),
+    new Date(mockQuizData.updatedAt),
     mockQuizData.createdBy,
-    mockQuizData.createdAt,
-    mockQuizData.updatedAt,
     mockQuizData.isActive
   );
 }
@@ -130,11 +139,12 @@ export function createMockSession(quizId: EntityId, userId: EntityId): GameSessi
     sessionId,
     quizId,
     userId,
+    1, // current level
     'in_progress' as GameStatus,
-    1, // current question level
+    [], // answers
+    new Date(), // started at
+    undefined, // completed at
     0, // current prize amount
-    0, // guaranteed amount
-    new Date(),
-    new Date()
+    0 // guaranteed amount
   );
 }

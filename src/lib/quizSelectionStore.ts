@@ -10,19 +10,25 @@ interface QuizSelectionStore {
 
 export const useQuizSelectionStore = create<QuizSelectionStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       selectedQuiz: null,
 
       setSelectedQuiz: (quiz) => {
+        console.log('Setting selected quiz:', quiz?.title);
         set({ selectedQuiz: quiz });
       },
 
       clearSelectedQuiz: () => {
+        console.log('Clearing selected quiz');
         set({ selectedQuiz: null });
       },
     }),
     {
       name: 'quiz-selection-storage',
+      partialize: (state) => ({ selectedQuiz: state.selectedQuiz }),
+      onRehydrateStorage: () => (state) => {
+        console.log('Quiz selection store rehydrated:', state?.selectedQuiz?.title || 'No quiz selected');
+      },
     }
   )
 );

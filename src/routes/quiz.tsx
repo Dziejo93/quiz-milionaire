@@ -22,6 +22,12 @@ function Quiz() {
   const navigate = useNavigate();
   const { selectedQuiz } = useQuizSelectionStore();
 
+  // Debug logging for production build
+  useEffect(() => {
+    console.log('Quiz route mounted, selectedQuiz:', selectedQuiz?.title || 'No quiz selected');
+    console.log('Quiz questions:', selectedQuiz?.questions?.length || 0);
+  }, [selectedQuiz]);
+
   const [gameState, setGameState] = useState<GameState | null>(null);
   const [currentQuestion, setCurrentQuestion] = useState<AdminQuestion | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -48,7 +54,11 @@ function Quiz() {
   }, [selectedQuiz, currentQuestion, showResult, isAnswering]);
 
   const startQuiz = () => {
-    if (!selectedQuiz) return;
+    console.log('startQuiz called, selectedQuiz:', selectedQuiz?.title || 'No quiz');
+    if (!selectedQuiz) {
+      console.error('Cannot start quiz: no quiz selected');
+      return;
+    }
 
     const initialGameState: GameState = {
       currentQuestionIndex: 0,

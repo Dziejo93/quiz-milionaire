@@ -46,7 +46,7 @@ export function PrizeConfiguration({ quizId, currentPrizes, onSuccess }: PrizeCo
     reset,
     formState: { errors, isSubmitting },
   } = useForm<PrizeFormData>({
-    resolver: zodResolver(prizeSchema),
+    resolver: zodResolver(prizeSchema) as any,
     defaultValues: {
       prizeStructure:
         currentPrizes.length > 0
@@ -66,12 +66,12 @@ export function PrizeConfiguration({ quizId, currentPrizes, onSuccess }: PrizeCo
     name: 'prizeStructure',
   });
 
-  const onSubmit = async (data: PrizeFormData) => {
+  const onSubmit = async (data: any) => {
     try {
       // Sort by level to ensure proper order
       const sortedPrizes = data.prizeStructure
-        .map((prize, index) => ({ ...prize, level: index + 1 }))
-        .sort((a, b) => a.level - b.level);
+        .map((prize: any, index: number) => ({ ...prize, level: index + 1 }))
+        .sort((a: any, b: any) => a.level - b.level);
 
       updatePrizeStructure(quizId, sortedPrizes);
       setIsOpen(false);
@@ -115,7 +115,7 @@ export function PrizeConfiguration({ quizId, currentPrizes, onSuccess }: PrizeCo
           </DialogTitle>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit as any)} className="space-y-6">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <Label className="millionaire-prize text-lg font-semibold">Prize Structure</Label>

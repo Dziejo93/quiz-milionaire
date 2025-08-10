@@ -1,7 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
-import type { Question } from '../../domains/quiz/entities/Question';
-import type { Quiz } from '../../domains/quiz/entities/Quiz';
 import { GameSession } from '../../domains/session/entities/GameSession';
 import { createMockQuiz, createMockSession } from '../../infrastructure/mock/mockData';
 import type { EntityId } from '../../shared/types';
@@ -19,7 +17,7 @@ const mockApi = {
     return { sessionId: currentSession.id, success: true };
   },
 
-  async resumeSession(sessionId: EntityId) {
+  async resumeSession(_sessionId: EntityId) {
     // Return the current session and quiz data
     const currentQuestion =
       currentQuestionIndex < mockQuiz.questions.length
@@ -35,10 +33,10 @@ const mockApi = {
   },
 
   async answerQuestion(
-    sessionId: EntityId,
-    questionId: EntityId,
+    _sessionId: EntityId,
+    _questionId: EntityId,
     answerId: EntityId,
-    timeUsed: number
+    _timeUsed: number
   ) {
     if (!currentSession) {
       return { success: false, error: 'No active session' };
@@ -49,14 +47,14 @@ const mockApi = {
       return { success: false, error: 'No current question' };
     }
 
-    const correctAnswer = currentQuestion.answers.find((a) => a.isCorrect);
+    const correctAnswer = currentQuestion.answers.find((a: any) => a.isCorrect);
     const isCorrect = answerId === correctAnswer?.id;
 
     if (isCorrect) {
       // Move to next question
       currentQuestionIndex++;
       const newLevel = currentQuestionIndex;
-      const prizeLevel = mockQuiz.prizeLevels.find((p) => p.level === newLevel);
+      const prizeLevel = (mockQuiz as any).prizeLevels?.find((p: any) => p.level === newLevel);
       const newPrizeAmount = prizeLevel?.amount || currentSession.currentPrizeAmount;
 
       // Update session
@@ -64,12 +62,13 @@ const mockApi = {
         currentSession.id,
         currentSession.quizId,
         currentSession.userId,
-        currentQuestionIndex >= mockQuiz.questions.length ? 'completed' : 'playing',
         newLevel,
-        newPrizeAmount,
-        mockQuiz.prizeLevels.filter((p) => p.isSafeHaven && p.level <= newLevel).pop()?.amount || 0,
+        currentQuestionIndex >= mockQuiz.questions.length ? 'completed' as const : 'in_progress' as const,
+        currentSession.answers,
         currentSession.startedAt,
-        new Date()
+        currentQuestionIndex >= mockQuiz.questions.length ? new Date() : undefined,
+        newPrizeAmount,
+        (mockQuiz as any).prizeLevels?.filter((p: any) => p.isSafeHaven && p.level <= newLevel).pop()?.amount || 0
       );
 
       return {
@@ -86,12 +85,13 @@ const mockApi = {
         currentSession.id,
         currentSession.quizId,
         currentSession.userId,
-        'completed',
-        currentSession.currentQuestionLevel,
-        currentSession.guaranteedAmount, // Fall back to guaranteed amount
-        currentSession.guaranteedAmount,
+        currentSession.currentLevel,
+        'completed' as const,
+        currentSession.answers,
         currentSession.startedAt,
-        new Date()
+        new Date(),
+        currentSession.guaranteedAmount,
+        currentSession.guaranteedAmount
       );
 
       return {
@@ -105,7 +105,7 @@ const mockApi = {
     }
   },
 
-  async abandonSession(sessionId: EntityId) {
+  async abandonSession(_sessionId: EntityId) {
     if (!currentSession) {
       return { success: false, finalPrize: 0 };
     }
@@ -115,12 +115,13 @@ const mockApi = {
       currentSession.id,
       currentSession.quizId,
       currentSession.userId,
-      'completed',
-      currentSession.currentQuestionLevel,
-      finalPrize,
-      finalPrize,
+      currentSession.currentLevel,
+      'completed' as const,
+      currentSession.answers,
       currentSession.startedAt,
-      new Date()
+      new Date(),
+      finalPrize,
+      finalPrize
     );
 
     return { success: true, finalPrize };
@@ -133,7 +134,7 @@ interface UseQuizSessionProps {
   userId: EntityId;
 }
 
-export function useQuizSession({ quizId, sessionId, userId }: UseQuizSessionProps) {
+export function useQuizSession({ sessionId, userId }: UseQuizSessionProps) {
   const [currentSessionId, setCurrentSessionId] = useState<EntityId | null>(sessionId || null);
   const [gameState, setGameState] = useState<'loading' | 'playing' | 'completed' | 'error'>(
     'loading'

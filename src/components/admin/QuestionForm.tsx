@@ -35,6 +35,7 @@ const questionSchema = z
     answers: z
       .array(
         z.object({
+          id: z.string().optional(),
           text: z.string().min(1, 'Answer text is required'),
           isCorrect: z.boolean(),
         })
@@ -68,15 +69,15 @@ export function QuestionForm({ quizId, question, onSuccess, trigger }: QuestionF
   const updateQuestion = useAdminStore((state) => state.updateQuestion);
 
   const {
-    register,
-    handleSubmit,
     control,
+    handleSubmit,
+    formState: { errors, isSubmitting },
     reset,
     watch,
     setValue,
-    formState: { errors, isSubmitting },
-  } = useForm<QuestionFormData>({
-    resolver: zodResolver(questionSchema),
+    register,
+  } = useForm({
+    resolver: zodResolver(questionSchema) as any,
     defaultValues: question
       ? {
           text: question.text,
@@ -106,23 +107,28 @@ export function QuestionForm({ quizId, question, onSuccess, trigger }: QuestionF
 
   const watchedImageUrl = watch('imageUrl');
 
-  const onSubmit = async (data: QuestionFormData) => {
+  const onSubmit = async (data: any) => {
     try {
+      const answersWithIds = data.answers.map((answer: any, index: number) => ({
+        ...answer,
+        id: answer.id || `answer-${Date.now()}-${index}`,
+      }));
+
       if (question) {
         updateQuestion(quizId, question.id, {
           text: data.text,
           type: data.type,
           imageUrl: data.type === 'image' ? data.imageUrl : undefined,
-          difficulty: data.difficulty,
-          answers: data.answers,
+          difficulty: data.difficulty as 1 | 2 | 3 | 4 | 5,
+          answers: answersWithIds,
         });
       } else {
         addQuestion(quizId, {
           text: data.text,
           type: data.type,
           imageUrl: data.type === 'image' ? data.imageUrl : undefined,
-          difficulty: data.difficulty,
-          answers: data.answers,
+          difficulty: data.difficulty as 1 | 2 | 3 | 4 | 5,
+          answers: answersWithIds,
         });
       }
 
@@ -156,7 +162,7 @@ export function QuestionForm({ quizId, question, onSuccess, trigger }: QuestionF
           </DialogTitle>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit as any)} className="space-y-6">
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <Label className="millionaire-prize text-lg font-semibold">Question Type</Label>
