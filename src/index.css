@@ -118,9 +118,11 @@
     );
     color: hsl(var(--millionaire-blue));
     border: 2px solid hsl(var(--millionaire-gold));
+    border-radius: 50px; /* Oval shape like WWTBAM */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     font-weight: 700;
     transition: all 0.3s ease;
+    padding: 12px 24px; /* Ensure proper oval proportions */
   }
 
   .millionaire-button:hover {
@@ -228,6 +230,34 @@
     box-shadow:
       0 8px 32px hsl(var(--millionaire-blue) / 0.4),
       inset 0 1px 0 hsl(var(--millionaire-gold) / 0.1);
+  }
+
+  /* Oval answer buttons like WWTBAM */
+  .millionaire-answer-button {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--millionaire-blue-light)) 0%,
+      hsl(var(--millionaire-blue)) 100%
+    );
+    color: hsl(var(--foreground));
+    border: 2px solid hsl(var(--millionaire-gold) / 0.6);
+    border-radius: 40px; /* Oval shape for answer buttons */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 16px 24px;
+    min-height: 80px;
+  }
+
+  .millionaire-answer-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    border-color: hsl(var(--millionaire-gold));
+    background: linear-gradient(
+      135deg,
+      hsl(var(--millionaire-blue)) 0%,
+      hsl(var(--millionaire-blue-light)) 100%
+    );
   }
 }
 

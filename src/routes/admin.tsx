@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { QuizCreationForm } from '@/components/admin/QuizCreationForm';
 import { QuizList } from '@/components/admin/QuizList';
 import { Button } from '@/components/ui/button';
@@ -10,6 +11,7 @@ export const Route = createFileRoute('/admin')({
 });
 
 function Admin() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<'overview' | 'manage'>('overview');
   const quizzes = useAdminStore((state) => state.quizzes);
 
@@ -77,21 +79,21 @@ function Admin() {
                 <h3 className="millionaire-prize text-2xl font-bold mb-2">
                   ${averagePrize.toLocaleString()}
                 </h3>
-                <p className="text-muted-foreground">Average Max Prize</p>
+                <p className="text-muted-foreground">{t('averageMaxPrize')}</p>
               </div>
 
               <div className="millionaire-card rounded-lg p-6 text-center">
                 <h3 className="millionaire-prize text-2xl font-bold mb-2">🎯</h3>
-                <p className="text-muted-foreground">Ready to Play</p>
+                <p className="text-muted-foreground">{t('readyToPlay')}</p>
               </div>
             </div>
 
             {/* Quick Actions */}
             <div className="millionaire-card millionaire-glow rounded-lg p-8">
               <div className="text-center mb-6">
-                <h2 className="millionaire-title text-3xl font-bold mb-2">🚀 QUICK ACTIONS</h2>
+                <h2 className="millionaire-title text-3xl font-bold mb-2">🚀 {t('quickActions')}</h2>
                 <p className="text-muted-foreground">
-                  Get started with creating and managing your quiz content
+                  {t('getStartedCreatingManaging')}
                 </p>
               </div>
 
@@ -149,32 +151,32 @@ function Admin() {
                     🎯 WELCOME TO QUIZ ADMIN!
                   </h3>
                   <p className="text-muted-foreground mb-6">
-                    Ready to create your first millionaire quiz? Here's how to get started:
+                    {t('readyToCreateFirstQuiz')}
                   </p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-8">
                   <div className="text-center space-y-3">
                     <div className="millionaire-prize text-4xl font-bold">1</div>
-                    <h4 className="millionaire-prize text-lg font-semibold">Create Quiz</h4>
+                    <h4 className="millionaire-prize text-lg font-semibold">{t('stepOne')}</h4>
                     <p className="text-muted-foreground text-sm">
-                      Start by creating a new quiz with a title and description
+                      {t('startByCreatingNewQuiz')}
                     </p>
                   </div>
 
                   <div className="text-center space-y-3">
                     <div className="millionaire-prize text-4xl font-bold">2</div>
-                    <h4 className="millionaire-prize text-lg font-semibold">Add Questions</h4>
+                    <h4 className="millionaire-prize text-lg font-semibold">{t('stepTwo')}</h4>
                     <p className="text-muted-foreground text-sm">
-                      Add text or image questions with multiple choice answers
+                      {t('addTextOrImageQuestions')}
                     </p>
                   </div>
 
                   <div className="text-center space-y-3">
                     <div className="millionaire-prize text-4xl font-bold">3</div>
-                    <h4 className="millionaire-prize text-lg font-semibold">Configure Prizes</h4>
+                    <h4 className="millionaire-prize text-lg font-semibold">{t('stepThree')}</h4>
                     <p className="text-muted-foreground text-sm">
-                      Set up your prize structure and safe haven levels
+                      {t('setUpPrizeStructure')}
                     </p>
                   </div>
                 </div>

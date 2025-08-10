@@ -1,5 +1,6 @@
-import { Link } from '@tanstack/react-router';
+import { Link, useNavigate } from '@tanstack/react-router';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -9,6 +10,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { type AdminQuiz, useAdminStore } from '@/lib/adminStore';
+import { useQuizSelectionStore } from '@/lib/quizSelectionStore';
 
 interface QuizSelectorProps {
   onQuizSelect?: (quiz: AdminQuiz) => void;
@@ -16,6 +18,9 @@ interface QuizSelectorProps {
 }
 
 export function QuizSelector({ onQuizSelect, trigger }: QuizSelectorProps) {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const setSelectedQuiz = useQuizSelectionStore((state) => state.setSelectedQuiz);
   const [isOpen, setIsOpen] = useState(false);
   const quizzes = useAdminStore((state) => state.quizzes);
 
@@ -26,19 +31,20 @@ export function QuizSelector({ onQuizSelect, trigger }: QuizSelectorProps) {
 
   const defaultTrigger = (
     <Button className="millionaire-button text-2xl px-16 py-6 rounded-lg font-bold">
-      🎯 START PLAYING NOW!
+      🎯 {t('startPlayingNow')}
     </Button>
   );
 
   if (quizzes.length === 0) {
     return (
       <div className="text-center space-y-4">
-        <p className="text-muted-foreground">
-          No custom quizzes available. Create your first quiz in the admin panel!
+        <h3 className="millionaire-prize text-2xl font-bold mb-4">{t('noQuizzesAvailable')}</h3>
+        <p className="text-muted-foreground mb-6">
+          {t('noQuizzesCreated')}
         </p>
         <Link to="/admin">
           <Button className="millionaire-button text-lg px-8 py-4 font-bold">
-            ⚙️ CREATE YOUR FIRST QUIZ
+            ⚙️ {t('goToAdmin')}
           </Button>
         </Link>
       </div>
@@ -51,13 +57,13 @@ export function QuizSelector({ onQuizSelect, trigger }: QuizSelectorProps) {
       <DialogContent className="millionaire-card max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="millionaire-title text-3xl font-bold text-center">
-            🎯 SELECT YOUR QUIZ CHALLENGE
+            🎯 {t('selectQuizChallenge')}
           </DialogTitle>
         </DialogHeader>
 
         <div className="space-y-6">
           <p className="text-center text-muted-foreground text-lg">
-            Choose from your custom-created quizzes and test your knowledge!
+            {t('chooseFromQuizzes')}
           </p>
 
           <div className="grid gap-4 md:grid-cols-2">
@@ -73,13 +79,13 @@ export function QuizSelector({ onQuizSelect, trigger }: QuizSelectorProps) {
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div className="space-y-2">
                     <div className="flex justify-between">
-                      <span>Questions:</span>
+                      <span>{t('questions')}:</span>
                       <span className="millionaire-prize font-semibold">
                         {quiz.questions.length}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Max Prize:</span>
+                      <span>{t('maxPrize')}:</span>
                       <span className="millionaire-prize font-semibold">
                         ${Math.max(...quiz.prizeStructure.map((p) => p.amount), 0).toLocaleString()}
                       </span>
@@ -88,7 +94,7 @@ export function QuizSelector({ onQuizSelect, trigger }: QuizSelectorProps) {
 
                   <div className="space-y-2">
                     <div className="flex justify-between">
-                      <span>Difficulty:</span>
+                      <span>{t('difficulty')}:</span>
                       <span className="text-muted-foreground">
                         {quiz.questions.length > 0
                           ? `⭐ ${Math.round(quiz.questions.reduce((sum, q) => sum + q.difficulty, 0) / quiz.questions.length)}/5`
@@ -96,7 +102,7 @@ export function QuizSelector({ onQuizSelect, trigger }: QuizSelectorProps) {
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Safe Havens:</span>
+                      <span>{t('safeHavens')}:</span>
                       <span className="text-green-400 font-semibold">
                         {quiz.prizeStructure.filter((p) => p.isSafeHaven).length}
                       </span>
@@ -107,11 +113,11 @@ export function QuizSelector({ onQuizSelect, trigger }: QuizSelectorProps) {
                 {quiz.questions.length === 0 ? (
                   <div className="text-center py-4">
                     <p className="text-muted-foreground text-sm mb-3">
-                      This quiz has no questions yet.
+                      {t('noQuestionsYet')}
                     </p>
                     <Link to="/admin">
                       <Button className="millionaire-button text-sm px-4 py-2 font-semibold">
-                        ➕ ADD QUESTIONS
+                        ➕ {t('addQuestions')}
                       </Button>
                     </Link>
                   </div>
@@ -122,13 +128,13 @@ export function QuizSelector({ onQuizSelect, trigger }: QuizSelectorProps) {
                         onClick={() => handleQuizSelect(quiz)}
                         className="millionaire-button w-full text-lg py-3 font-bold"
                       >
-                        🚀 PLAY THIS QUIZ
+                        🚀 {t('playThisQuiz')}
                       </Button>
                     </div>
 
                     {quiz.questions.length < 5 && (
                       <p className="text-center text-xs text-muted-foreground">
-                        💡 Tip: Add more questions for a longer challenge!
+                        💡 {t('tipAddMoreQuestions')}
                       </p>
                     )}
                   </div>
