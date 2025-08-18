@@ -263,10 +263,8 @@ function Quiz() {
                 <p>
                   • {t('answerQuestionsCorrectly')} {selectedQuiz.questions?.length || 0} {t('multipleChoiceQuestions')}
                 </p>
-                <p>{t('eachQuestionHasTimeLimit')}</p>
                 <p>{t('prizeMoneyIncreases')}</p>
                 <p>{t('wrongAnswersEndGame')}</p>
-                <p>{t('walkAwayAtAnyTime')}</p>
               </div>
             </div>
 

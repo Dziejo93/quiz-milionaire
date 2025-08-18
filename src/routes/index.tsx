@@ -42,8 +42,6 @@ function HomePage() {
                 <li>• {t('prizeMoneyIncreasesWithEachCorrectAnswer')}</li>
                 <li>• {t('wrongAnswersEndTheGame')}</li>
                 <li>• {t('walkAwayAnytimeToSecureYourWinnings')}</li>
-                <li>• Wrong answers end the game</li>
-                <li>• Walk away anytime to secure your winnings</li>
               </ul>
             </div>
 

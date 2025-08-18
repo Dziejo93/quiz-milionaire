@@ -180,18 +180,18 @@ const resources = {
       
       // Home page
       welcome: 'Witamy w',
-      whoWantsToBeMillionaire: 'Milionerzy',
+      whoWantsToBeMillionaire: 'Alutkonerzy',
       selectQuiz: 'Wybierz quiz do gry',
       noQuizzesAvailable: 'Brak dostępnych quizów. Utwórz jeden w panelu administracyjnym!',
       playThisQuiz: 'Zagraj w ten quiz',
       goToAdmin: 'Przejdź do panelu administracyjnego',
       welcomeToTheHottestQuizGameOnTheWeb: 'WITAMY W NAJGORĘTSZEJ GRZE QUIZOWEJ W SIECI!',
       howToPlay: 'JAK GRAĆ',
-      answerMultipleChoiceQuestionsCorrectly: 'Odpowiadaj poprawnie na pytania wielokrotnego wyboru',
-      eachQuestionHasATimeLimit: 'Każde pytanie ma limit czasu 30 sekund',
-      prizeMoneyIncreasesWithEachCorrectAnswer: 'Nagroda pieniężna rośnie z każdą poprawną odpowiedzią',
-      wrongAnswersEndTheGame: 'Błędne odpowiedzi kończą grę',
-      walkAwayAnytimeToSecureYourWinnings: 'Zrezygnuj w dowolnym momencie, aby zabezpieczyć swoje wygrane',
+      answerMultipleChoiceQuestionsCorrectly: 'Nie wiem totalnie vibe coding',
+      eachQuestionHasATimeLimit: 'Mial byc limit ale usunalem',
+      prizeMoneyIncreasesWithEachCorrectAnswer: 'Nagroda rośnie z każdą poprawną odpowiedzią',
+      wrongAnswersEndTheGame: 'Błędne odpowiedzi koncza sie jedzeniem kolendry',
+      walkAwayAnytimeToSecureYourWinnings: 'Zakaz rezygnowania',
       lifelinesHelp: 'KOŁA RATUNKOWE',
       useLifelinesToHelp: 'Użyj kół ratunkowych, aby pomóc sobie odpowiedzieć na trudne pytania',
       fiftyFiftyRemovesTwoWrongAnswers: '50:50 usuwa dwie błędne odpowiedzi',
@@ -211,7 +211,7 @@ const resources = {
       supportForTextAndImage: 'Obsługa pytań tekstowych i obrazkowych',
       unlimitedQuizCreation: 'Nieograniczone możliwości tworzenia quizów',
       professionalAdminPanel: 'Profesjonalny panel administracyjny w zestawie',
-      
+      useEachLifelineOnlyOnce: "Każde koło ratunkowe można użyć tylko raz na grę!",
       // Quiz gameplay
       startQuiz: 'ROZPOCZNIJ QUIZ',
       question: 'Pytanie',
@@ -229,7 +229,7 @@ const resources = {
       secureWinningsEndGame: 'Zabezpiecz swoje wygrane i zakończ grę',
       gameRules: 'ZASADY GRY',
       answerQuestionsCorrectly: 'Odpowiedz na',
-      multipleChoiceQuestions: 'pytania wielokrotnego wyboru poprawnie',
+      multipleChoiceQuestions: 'pytania poprawnie',
       eachQuestionHasTimeLimit: '• Każde pytanie ma limit czasu 30 sekund',
       prizeMoneyIncreases: '• Nagroda pieniężna rośnie z każdą poprawną odpowiedzią',
       wrongAnswersEndGame: '• Błędne odpowiedzi kończą grę - zachowujesz gwarantowane wygrane',
@@ -320,7 +320,7 @@ const resources = {
       
       // Quiz selector
       startPlayingNow: 'ZACZNIJ GRAĆ TERAZ!',
-      selectQuizChallenge: 'WYBIERZ SWOJE WYZWANIE QUIZOWE',
+      selectQuizChallenge: 'WYBIERZ SWOJE SE QUIZ',
       chooseFromQuizzes: 'Wybierz spośród swoich niestandardowych quizów i przetestuj swoją wiedzę!',
       questions: 'Pytania',
       maxPrize: 'Maksymalna nagroda',
