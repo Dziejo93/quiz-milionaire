@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { type AdminQuiz, useAdminStore } from '@/lib/adminStore';
 import { PrizeConfiguration } from './PrizeConfiguration';
 import { QuestionForm } from './QuestionForm';
+import { QuizEditForm } from './QuizEditForm';
 
 interface QuizListProps {
   onQuizSelect?: (quiz: AdminQuiz) => void;
@@ -104,6 +105,7 @@ export function QuizList({ onQuizSelect }: QuizListProps) {
               >
                 📋 MANAGE
               </Button>
+              <QuizEditForm quiz={quiz} />
               <Button
                 onClick={() => handleDeleteQuiz(quiz.id, quiz.title)}
                 variant="destructive"
@@ -122,9 +124,19 @@ export function QuizList({ onQuizSelect }: QuizListProps) {
           {selectedQuiz && (
             <>
               <DialogHeader>
-                <DialogTitle className="text-2xl font-bold text-center text-transparent bg-clip-text [background-image:linear-gradient(135deg,hsl(var(--millionaire-gold))_0%,hsl(var(--millionaire-gold-light))_50%,hsl(var(--millionaire-gold))_100%)] [text-shadow:0_0_30px_hsl(var(--millionaire-gold)/0.5)]">
-                  📋 MANAGE QUIZ: {selectedQuiz.title}
-                </DialogTitle>
+                <div className="flex items-center justify-between">
+                  <DialogTitle className="text-2xl font-bold text-center text-transparent bg-clip-text [background-image:linear-gradient(135deg,hsl(var(--millionaire-gold))_0%,hsl(var(--millionaire-gold-light))_50%,hsl(var(--millionaire-gold))_100%)] [text-shadow:0_0_30px_hsl(var(--millionaire-gold)/0.5)]">
+                    📋 MANAGE QUIZ: {selectedQuiz.title}
+                  </DialogTitle>
+                  <QuizEditForm 
+                    quiz={selectedQuiz} 
+                    trigger={
+                      <Button className="px-4 py-2 text-sm rounded-full [background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]">
+                        ✏️ EDIT QUIZ
+                      </Button>
+                    }
+                  />
+                </div>
               </DialogHeader>
 
               <div className="space-y-6">
