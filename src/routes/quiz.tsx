@@ -223,11 +223,11 @@ function Quiz() {
   // No quiz selected - show selector
   if (!selectedQuiz) {
     return (
-      <div className="min-h-screen millionaire-gradient flex items-center justify-center p-4">
-        <div className="millionaire-card rounded-lg max-w-4xl mx-auto p-8">
+      <div className="min-h-screen [background:linear-gradient(135deg,hsl(var(--millionaire-blue))_0%,hsl(var(--millionaire-blue-light))_50%,hsl(var(--millionaire-blue))_100%)] flex items-center justify-center p-4">
+        <div className="rounded-lg max-w-4xl mx-auto p-8 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
           <div className="text-center space-y-6 mb-8">
-            <h1 className="millionaire-title text-5xl font-bold mb-4">WHO WANTS TO BE A</h1>
-            <h3 className="millionaire-prize text-xl font-bold mb-4">{t('selectQuiz')}</h3>
+            <h1 className="text-5xl font-bold mb-4 text-transparent bg-clip-text [background-image:linear-gradient(135deg,hsl(var(--millionaire-gold))_0%,hsl(var(--millionaire-gold-light))_50%,hsl(var(--millionaire-gold))_100%)] [text-shadow:0_0_30px_hsl(var(--millionaire-gold)/0.5)]">WHO WANTS TO BE A</h1>
+            <h3 className="text-xl font-bold mb-4 text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">{t('selectQuiz')}</h3>
             <p className="text-white mb-6">{t('noQuizzesAvailable')}</p>
           </div>
 
@@ -236,7 +236,7 @@ function Quiz() {
           <div className="text-center mt-8">
             <Link
               to="/"
-              className="millionaire-button inline-block px-8 py-4 text-lg font-semibold no-underline"
+              className="inline-block px-8 py-4 text-lg font-semibold no-underline rounded-full [background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]"
             >
               🏠 {t('home').toUpperCase()}
             </Link>
@@ -249,14 +249,14 @@ function Quiz() {
   // Not started state
   if (!gameState) {
     return (
-      <div className="min-h-screen millionaire-gradient flex items-center justify-center p-4">
-        <div className="millionaire-card rounded-lg max-w-2xl mx-auto p-8">
+      <div className="min-h-screen [background:linear-gradient(135deg,hsl(var(--millionaire-blue))_0%,hsl(var(--millionaire-blue-light))_50%,hsl(var(--millionaire-blue))_100%)] flex items-center justify-center p-4">
+        <div className="rounded-lg max-w-2xl mx-auto p-8 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
           <div className="text-center space-y-6">
-            <h1 className="millionaire-title text-4xl font-bold mb-4">{selectedQuiz.title}</h1>
+            <h1 className="text-4xl font-bold mb-4 text-transparent bg-clip-text [background-image:linear-gradient(135deg,hsl(var(--millionaire-gold))_0%,hsl(var(--millionaire-gold-light))_50%,hsl(var(--millionaire-gold))_100%)] [text-shadow:0_0_30px_hsl(var(--millionaire-gold)/0.5)]">{selectedQuiz.title}</h1>
             <p className="text-lg text-white mb-6">{selectedQuiz.description}</p>
 
-            <div className="millionaire-card rounded-lg p-6 space-y-3 text-left">
-              <h3 className="millionaire-prize text-lg font-semibold mb-4 text-center">
+            <div className="rounded-lg p-6 space-y-3 text-left [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+              <h3 className="text-lg font-semibold mb-4 text-center text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
                 {t('gameRules')}
               </h3>
               <div className="space-y-2 text-white">
@@ -270,8 +270,8 @@ function Quiz() {
               </div>
             </div>
 
-            <div className="millionaire-card rounded-lg p-6">
-              <h3 className="millionaire-prize text-lg font-semibold mb-4 text-center">
+            <div className="rounded-lg p-6 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+              <h3 className="text-lg font-semibold mb-4 text-center text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
                 {t('prizeStructure')}
               </h3>
               <div className="space-y-2">
@@ -279,7 +279,7 @@ function Quiz() {
                   <div key={`prize-${index}`} className="flex justify-between items-center">
                     <span className="text-white">{t('question')} {index + 1}:</span>
                     <span
-                      className={`font-bold ${prize.isSafeHaven ? 'millionaire-prize' : 'text-white'}`}
+                      className={`font-bold ${prize.isSafeHaven ? 'text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]' : 'text-white'}`}
                     >
                       ${prize.amount.toLocaleString()}
                       {prize.isSafeHaven && ' 🛡️'}
@@ -289,7 +289,7 @@ function Quiz() {
               </div>
             </div>
 
-            <Button onClick={startQuiz} className="millionaire-button px-12 py-6 text-xl font-bold">
+            <Button onClick={startQuiz} className="px-12 py-6 text-xl font-bold rounded-full [background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]">
               🎯 {t('startQuiz')}
             </Button>
 
@@ -310,17 +310,17 @@ function Quiz() {
     const finalPrize = gameState.currentPrizeAmount;
 
     return (
-      <div className="min-h-screen millionaire-gradient flex items-center justify-center p-4">
-        <div className="millionaire-card rounded-lg max-w-2xl mx-auto p-8">
+      <div className="min-h-screen [background:linear-gradient(135deg,hsl(var(--millionaire-blue))_0%,hsl(var(--millionaire-blue-light))_50%,hsl(var(--millionaire-blue))_100%)] flex items-center justify-center p-4">
+        <div className="rounded-lg max-w-2xl mx-auto p-8 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
           <div className="text-center space-y-6">
-            <h1 className="millionaire-title text-4xl font-bold mb-4">
+            <h1 className="text-4xl font-bold mb-4 text-transparent bg-clip-text [background-image:linear-gradient(135deg,hsl(var(--millionaire-gold))_0%,hsl(var(--millionaire-gold-light))_50%,hsl(var(--millionaire-gold))_100%)] [text-shadow:0_0_30px_hsl(var(--millionaire-gold)/0.5)]">
               {isWinner ? `🎉 ${t('congratulations')} 🎉` : `😔 ${t('gameOver')}`}
             </h1>
 
-            <div className="millionaire-card millionaire-glow rounded-lg p-8">
+            <div className="rounded-lg p-8 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_0_20px_hsl(var(--millionaire-gold)/0.3),0_0_40px_hsl(var(--millionaire-gold)/0.1),inset_0_1px_0_hsl(var(--millionaire-gold)/0.2)]">
               <div className="text-center">
                 <div className="text-lg text-white mb-2">{t('youWon')}</div>
-                <div className="millionaire-prize text-6xl font-bold mb-4">
+                <div className="text-6xl font-bold mb-4 text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_20px_hsl(var(--millionaire-gold)/0.3)]">
                   ${finalPrize.toLocaleString()}
                 </div>
                 <div className="text-white">
@@ -341,13 +341,13 @@ function Quiz() {
             <div className="flex gap-4 justify-center">
               <Button
                 onClick={() => setGameState(null)}
-                className="millionaire-button px-8 py-4 text-lg font-semibold"
+                className="px-8 py-4 text-lg font-semibold rounded-full [background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]"
               >
                 🎯 {t('playAgain')}
               </Button>
               <Button
                 onClick={() => navigate({ to: '/' })}
-                className="millionaire-button px-8 py-4 text-lg font-semibold"
+                className="px-8 py-4 text-lg font-semibold rounded-full [background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]"
               >
                 🏠 {t('home').toUpperCase()}
               </Button>
@@ -367,37 +367,39 @@ function Quiz() {
   const progress = (gameState.currentQuestionIndex / (selectedQuiz.questions?.length || 1)) * 100;
 
   return (
-    <div className="min-h-screen millionaire-gradient p-4">
+    <div className="min-h-screen p-4 [background:linear-gradient(135deg,hsl(var(--millionaire-blue))_0%,hsl(var(--millionaire-blue-light))_50%,hsl(var(--millionaire-blue))_100%)]">
       <div className="max-w-6xl mx-auto space-y-6">
         {/* Header with progress and prize */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-          <div className="millionaire-card rounded-lg p-6">
+          <div className="rounded-lg p-6 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
             <div className="text-center">
-              <div className="millionaire-prize text-3xl font-bold mb-2">
+              <div className="text-3xl font-bold mb-2 text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
                 {t('question')} {currentLevel}
               </div>
               <div className="text-sm text-white mb-3">
                 {t('of')} {selectedQuiz.questions?.length || 0}
               </div>
-              <Progress value={progress} className="h-3 bg-millionaire-blue-light" />
+              <Progress value={progress} className="h-3 bg-[hsl(var(--millionaire-blue-light))]" />
             </div>
           </div>
 
-          <div className="millionaire-card millionaire-glow rounded-lg p-6">
+          <div className="rounded-lg p-6 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_0_20px_hsl(var(--millionaire-gold)/0.3),0_0_40px_hsl(var(--millionaire-gold)/0.1),inset_0_1px_0_hsl(var(--millionaire-gold)/0.2)]">
             <div className="text-center">
               <div className="text-sm text-white mb-2">{t('currentPrize')}</div>
-              <div className="millionaire-prize text-4xl font-bold">
+              <div className="text-4xl font-bold text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
                 ${gameState.currentPrizeAmount.toLocaleString()}
               </div>
             </div>
           </div>
 
-          <div className="millionaire-card rounded-lg p-6">
+          <div className="rounded-lg p-6 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
             <div className="text-center">
               <div className="text-sm text-white mb-2">{t('timeLeft')}</div>
               <div
                 className={`text-4xl font-bold ${
-                  timeLeft <= 10 ? 'millionaire-timer-danger' : 'millionaire-timer'
+                  timeLeft <= 10
+                    ? 'text-[hsl(var(--incorrect-red))] animate-pulse [text-shadow:0_0_15px_hsl(var(--incorrect-red)/0.8)]'
+                    : 'text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_15px_hsl(var(--millionaire-gold)/0.6)]'
                 }`}
               >
                 {timeLeft}s
@@ -407,18 +409,18 @@ function Quiz() {
         </div>
 
         {/* Lifelines */}
-        <div className="millionaire-card rounded-lg p-6">
+        <div className="rounded-lg p-6 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
           <div className="text-center mb-4">
-            <h3 className="millionaire-prize text-xl font-bold">{t('lifelines')}</h3>
+            <h3 className="text-xl font-bold text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">{t('lifelines')}</h3>
             <p className="text-sm text-white mt-2">{t('useEachLifelineOnlyOnce')}</p>
           </div>
           <div className="flex justify-center gap-4">
             <Button
               onClick={useFiftyFifty}
               disabled={!lifelines.fiftyFifty}
-              className={`px-6 py-3 font-bold ${
+              className={`px-6 py-3 font-bold rounded-full ${
                 lifelines.fiftyFifty
-                  ? 'millionaire-button'
+                  ? '[background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]'
                   : 'bg-gray-600 text-gray-400 cursor-not-allowed'
               }`}
             >
@@ -427,9 +429,9 @@ function Quiz() {
             <Button
               onClick={useStopTimer}
               disabled={!lifelines.stopTimer}
-              className={`px-6 py-3 font-bold ${
+              className={`px-6 py-3 font-bold rounded-full ${
                 lifelines.stopTimer
-                  ? 'millionaire-button'
+                  ? '[background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]'
                   : 'bg-gray-600 text-gray-400 cursor-not-allowed'
               }`}
             >
@@ -438,9 +440,9 @@ function Quiz() {
             <Button
               onClick={useCallFriend}
               disabled={!lifelines.callFriend}
-              className={`px-6 py-3 font-bold ${
+              className={`px-6 py-3 font-bold rounded-full ${
                 lifelines.callFriend
-                  ? 'millionaire-button'
+                  ? '[background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]'
                   : 'bg-gray-600 text-gray-400 cursor-not-allowed'
               }`}
             >
@@ -449,14 +451,14 @@ function Quiz() {
           </div>
           {isTimerPaused && (
             <div className="text-center mt-4">
-              <span className="millionaire-prize font-bold">⏸️ {t('timerPaused')}</span>
+              <span className="font-bold text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">⏸️ {t('timerPaused')}</span>
             </div>
           )}
         </div>
 
         {/* Question */}
-        <div className="millionaire-question rounded-lg p-8 mt-8">
-          <h2 className="text-3xl font-bold text-center mb-8 millionaire-prize">
+        <div className="rounded-lg p-8 mt-8 [background:linear-gradient(145deg,hsl(var(--card))_0%,hsl(var(--millionaire-blue-light))_100%)] border-2 border-[hsl(var(--millionaire-gold)/0.4)] shadow-[0_8px_32px_hsl(var(--millionaire-blue)/0.4),inset_0_1px_0_hsl(var(--millionaire-gold)/0.1)]">
+          <h2 className="text-3xl font-bold text-center mb-8 text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
             {currentQuestion.text}
           </h2>
 
@@ -490,16 +492,16 @@ function Quiz() {
               }
               
               let buttonClass =
-                'millionaire-answer-button h-20 text-left justify-start text-lg font-semibold';
+                'h-20 text-left justify-start text-lg font-semibold flex items-center rounded-full transition-all px-6 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] text-[hsl(var(--foreground))] border-2 border-[hsl(var(--millionaire-gold)/0.6)] shadow-[0_4px_15px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]';
 
               if (showResult && selectedAnswer === answerId) {
                 buttonClass += answer.isCorrect
-                  ? ' millionaire-button-correct'
-                  : ' millionaire-button-incorrect';
+                  ? ' [background:linear-gradient(135deg,hsl(var(--correct-green))_0%,hsl(var(--correct-green)/0.8)_100%)] border-[hsl(var(--millionaire-gold))] [box-shadow:0_0_30px_hsl(var(--correct-green)/0.5)]'
+                  : ' [background:linear-gradient(145deg,hsl(var(--incorrect-red))_0%,hsl(var(--incorrect-red)/0.8)_100%)] border-[hsl(var(--millionaire-gold))] [box-shadow:0_0_30px_hsl(var(--incorrect-red)/0.5),inset_0_1px_0_hsl(var(--millionaire-gold)/0.3)]';
               } else if (showResult && answer.isCorrect) {
-                buttonClass += ' millionaire-button-correct';
+                buttonClass += ' [background:linear-gradient(135deg,hsl(var(--correct-green))_0%,hsl(var(--correct-green)/0.8)_100%)] border-[hsl(var(--millionaire-gold))] [box-shadow:0_0_30px_hsl(var(--correct-green)/0.5)]';
               } else if (selectedAnswer === answerId && !showResult) {
-                buttonClass += ' millionaire-button-selected';
+                buttonClass += ' ring-2 ring-[hsl(var(--millionaire-gold))] [box-shadow:0_0_25px_hsl(var(--millionaire-gold)/0.4),inset_0_1px_0_hsl(var(--millionaire-gold)/0.3)]';
               }
 
               return (
@@ -509,7 +511,7 @@ function Quiz() {
                   onClick={() => handleAnswer(answerId)}
                   disabled={showResult || isAnswering}
                 >
-                  <span className="millionaire-prize text-xl font-bold mr-4">
+                  <span className="text-[hsl(var(--millionaire-gold))] text-xl font-bold mr-4 [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
                     {letters[index]}:
                   </span>
                   <span>{answer.text}</span>
@@ -524,7 +526,7 @@ function Quiz() {
           <div className="text-center mt-8">
             <Button
               onClick={handleWalkAway}
-              className="millionaire-button px-8 py-4 text-lg font-semibold"
+              className="px-8 py-4 text-lg font-semibold rounded-full [background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]"
             >
               💰 {t('walkAway')} ${gameState.currentPrizeAmount.toLocaleString()}
             </Button>

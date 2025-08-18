@@ -147,7 +147,7 @@ export function QuestionForm({ quizId, question, onSuccess, trigger }: QuestionF
   };
 
   const defaultTrigger = (
-    <Button className="millionaire-button text-lg px-6 py-3 font-bold">
+    <Button className="text-lg px-6 py-3 font-bold rounded-full [background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]">
       {question ? '✏️ EDIT QUESTION' : '➕ ADD QUESTION'}
     </Button>
   );
@@ -155,9 +155,9 @@ export function QuestionForm({ quizId, question, onSuccess, trigger }: QuestionF
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>{trigger || defaultTrigger}</DialogTrigger>
-      <DialogContent className="millionaire-card max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)] text-white">
         <DialogHeader>
-          <DialogTitle className="millionaire-title text-2xl font-bold text-center">
+          <DialogTitle className="text-2xl font-bold text-center text-transparent bg-clip-text [background-image:linear-gradient(135deg,hsl(var(--millionaire-gold))_0%,hsl(var(--millionaire-gold-light))_50%,hsl(var(--millionaire-gold))_100%)] [text-shadow:0_0_30px_hsl(var(--millionaire-gold)/0.5)]">
             {question ? '✏️ EDIT QUESTION' : '➕ ADD NEW QUESTION'}
           </DialogTitle>
         </DialogHeader>
@@ -165,7 +165,7 @@ export function QuestionForm({ quizId, question, onSuccess, trigger }: QuestionF
         <form onSubmit={handleSubmit(onSubmit as any)} className="space-y-6">
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <Label className="millionaire-prize text-lg font-semibold">Question Type</Label>
+              <Label className="text-lg font-semibold text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">Question Type</Label>
               <Select
                 value={questionType}
                 onValueChange={(value: 'text' | 'image') => {
@@ -173,10 +173,10 @@ export function QuestionForm({ quizId, question, onSuccess, trigger }: QuestionF
                   setValue('type', value);
                 }}
               >
-                <SelectTrigger className="millionaire-card border-millionaire-gold/30 text-lg p-3">
+                <SelectTrigger className="text-lg p-3 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_12px_rgba(0,0,0,0.3)] text-white">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="millionaire-card">
+                <SelectContent className="[background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_12px_rgba(0,0,0,0.3)] text-white">
                   <SelectItem value="text">📝 Text Question</SelectItem>
                   <SelectItem value="image">🖼️ Image Question</SelectItem>
                 </SelectContent>
@@ -184,17 +184,17 @@ export function QuestionForm({ quizId, question, onSuccess, trigger }: QuestionF
             </div>
 
             <div className="space-y-2">
-              <Label className="millionaire-prize text-lg font-semibold">Difficulty Level</Label>
+              <Label className="text-lg font-semibold text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">Difficulty Level</Label>
               <Select
                 value={watch('difficulty')?.toString()}
                 onValueChange={(value) =>
                   setValue('difficulty', parseInt(value) as 1 | 2 | 3 | 4 | 5)
                 }
               >
-                <SelectTrigger className="millionaire-card border-millionaire-gold/30 text-lg p-3">
+                <SelectTrigger className="text-lg p-3 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_12px_rgba(0,0,0,0.3)] text-white">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="millionaire-card">
+                <SelectContent className="[background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_12px_rgba(0,0,0,0.3)] text-white">
                   <SelectItem value="1">⭐ Level 1 - Easy</SelectItem>
                   <SelectItem value="2">⭐⭐ Level 2 - Medium</SelectItem>
                   <SelectItem value="3">⭐⭐⭐ Level 3 - Hard</SelectItem>
@@ -206,14 +206,14 @@ export function QuestionForm({ quizId, question, onSuccess, trigger }: QuestionF
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="text" className="millionaire-prize text-lg font-semibold">
+            <Label htmlFor="text" className="text-lg font-semibold text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
               Question Text
             </Label>
             <Textarea
               id="text"
               {...register('text')}
               placeholder="Enter your question here..."
-              className="millionaire-card border-millionaire-gold/30 text-lg p-3 min-h-[100px]"
+              className="text-lg p-3 min-h-[100px] [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_12px_rgba(0,0,0,0.3)] text-white"
             />
             {errors.text && <p className="text-red-400 text-sm">{errors.text.message}</p>}
           </div>
@@ -221,14 +221,14 @@ export function QuestionForm({ quizId, question, onSuccess, trigger }: QuestionF
           {questionType === 'image' && (
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="imageUrl" className="millionaire-prize text-lg font-semibold">
+                <Label htmlFor="imageUrl" className="text-lg font-semibold text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
                   Image URL
                 </Label>
                 <Input
                   id="imageUrl"
                   {...register('imageUrl')}
                   placeholder="https://example.com/image.jpg"
-                  className="millionaire-card border-millionaire-gold/30 text-lg p-3"
+                  className="text-lg p-3 bg-gradient-to-r from-[hsl(var(--millionaire-blue-light))] to-[hsl(var(--millionaire-blue))] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_12px_rgba(0,0,0,0.3)] text-white"
                 />
                 {errors.imageUrl && (
                   <p className="text-red-400 text-sm">{errors.imageUrl.message}</p>
@@ -236,14 +236,14 @@ export function QuestionForm({ quizId, question, onSuccess, trigger }: QuestionF
               </div>
 
               {watchedImageUrl && (
-                <div className="millionaire-card rounded-lg p-4">
-                  <Label className="millionaire-prize text-lg font-semibold mb-2 block">
+                <div className="rounded-lg p-4 bg-gradient-to-r from-[hsl(var(--millionaire-blue-light))] to-[hsl(var(--millionaire-blue))] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_12px_rgba(0,0,0,0.3)]">
+                  <Label className="text-lg font-semibold mb-2 block text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
                     🖼️ Image Preview
                   </Label>
                   <img
                     src={watchedImageUrl}
                     alt="Question preview"
-                    className="max-w-full h-auto rounded-lg border-2 border-millionaire-gold/30"
+                    className="max-w-full h-auto rounded-lg border-2 border-[hsl(var(--millionaire-gold)/0.3)]"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                     }}
@@ -254,27 +254,27 @@ export function QuestionForm({ quizId, question, onSuccess, trigger }: QuestionF
           )}
 
           <div className="space-y-4">
-            <Label className="millionaire-prize text-lg font-semibold">
+            <Label className="text-lg font-semibold text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
               Answer Options (Select the correct answer)
             </Label>
             {fields.map((field, index) => (
-              <div key={field.id} className="millionaire-card rounded-lg p-4 space-y-3">
+              <div key={field.id} className="rounded-lg p-4 space-y-3 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_12px_rgba(0,0,0,0.3)]">
                 <div className="flex items-center gap-3">
-                  <div className="millionaire-prize font-bold text-lg w-8 h-8 rounded-full bg-millionaire-gold/20 flex items-center justify-center">
+                  <div className="font-bold text-lg w-8 h-8 rounded-full flex items-center justify-center text-[hsl(var(--millionaire-gold))] bg-[hsl(var(--millionaire-gold)/0.2)] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
                     {String.fromCharCode(65 + index)}
                   </div>
                   <Input
                     {...register(`answers.${index}.text`)}
                     placeholder={`Answer ${String.fromCharCode(65 + index)}`}
-                    className="flex-1 millionaire-card border-millionaire-gold/30 text-lg p-3"
+                    className="flex-1 text-lg p-3 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_12px_rgba(0,0,0,0.3)] text-white"
                   />
                   <Button
                     type="button"
                     onClick={() => handleCorrectAnswerChange(index)}
-                    className={`px-4 py-2 font-bold ${
+                    className={`px-4 py-2 font-bold rounded-full ${
                       watch(`answers.${index}.isCorrect`)
                         ? 'bg-green-600 hover:bg-green-700 text-white'
-                        : 'millionaire-button'
+                        : '[background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]'
                     }`}
                   >
                     {watch(`answers.${index}.isCorrect`) ? '✅ CORRECT' : 'Mark Correct'}
@@ -304,7 +304,7 @@ export function QuestionForm({ quizId, question, onSuccess, trigger }: QuestionF
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="millionaire-button flex-1 text-lg py-3 font-bold"
+              className="flex-1 text-lg py-3 font-bold rounded-full [background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]"
             >
               {isSubmitting ? 'Saving...' : question ? '💾 UPDATE QUESTION' : '🚀 ADD QUESTION'}
             </Button>

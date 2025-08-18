@@ -53,8 +53,8 @@ export function QuizList({ onQuizSelect }: QuizListProps) {
 
   if (quizzes.length === 0) {
     return (
-      <div className="millionaire-card rounded-lg p-8 text-center">
-        <h3 className="millionaire-prize text-xl font-bold mb-4">📝 No Quizzes Created Yet</h3>
+      <div className="rounded-lg p-8 text-center [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+        <h3 className="text-xl font-bold mb-4 text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">📝 No Quizzes Created Yet</h3>
         <p className="text-muted-foreground mb-6">
           Create your first quiz to get started with the millionaire experience!
         </p>
@@ -70,9 +70,9 @@ export function QuizList({ onQuizSelect }: QuizListProps) {
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {quizzes.map((quiz) => (
-          <div key={quiz.id} className="millionaire-card rounded-lg p-6 space-y-4">
+          <div key={quiz.id} className="rounded-lg p-6 space-y-4 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
             <div>
-              <h4 className="millionaire-prize text-lg font-bold mb-2 line-clamp-2">
+              <h4 className="text-lg font-bold mb-2 line-clamp-2 text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
                 {quiz.title}
               </h4>
               <p className="text-muted-foreground text-sm line-clamp-3 mb-3">{quiz.description}</p>
@@ -81,11 +81,11 @@ export function QuizList({ onQuizSelect }: QuizListProps) {
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
                 <span>Questions:</span>
-                <span className="millionaire-prize font-semibold">{quiz.questions.length}</span>
+                <span className="font-semibold text-[hsl(var(--millionaire-gold))]">{quiz.questions.length}</span>
               </div>
               <div className="flex justify-between">
                 <span>Max Prize:</span>
-                <span className="millionaire-prize font-semibold">
+                <span className="font-semibold text-[hsl(var(--millionaire-gold))]">
                   ${Math.max(...quiz.prizeStructure.map((p) => p.amount), 0)}
                 </span>
               </div>
@@ -100,7 +100,7 @@ export function QuizList({ onQuizSelect }: QuizListProps) {
             <div className="flex gap-2 pt-2">
               <Button
                 onClick={() => openQuizDetails(quiz)}
-                className="millionaire-button flex-1 text-sm py-2 font-semibold"
+                className="flex-1 text-sm py-2 font-semibold rounded-full [background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]"
               >
                 📋 MANAGE
               </Button>
@@ -118,19 +118,19 @@ export function QuizList({ onQuizSelect }: QuizListProps) {
 
       {/* Quiz Details Modal */}
       <Dialog open={isDetailsOpen} onOpenChange={setIsDetailsOpen}>
-        <DialogContent className="millionaire-card max-w-5xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)] text-white">
           {selectedQuiz && (
             <>
               <DialogHeader>
-                <DialogTitle className="millionaire-title text-2xl font-bold text-center">
+                <DialogTitle className="text-2xl font-bold text-center text-transparent bg-clip-text [background-image:linear-gradient(135deg,hsl(var(--millionaire-gold))_0%,hsl(var(--millionaire-gold-light))_50%,hsl(var(--millionaire-gold))_100%)] [text-shadow:0_0_30px_hsl(var(--millionaire-gold)/0.5)]">
                   📋 MANAGE QUIZ: {selectedQuiz.title}
                 </DialogTitle>
               </DialogHeader>
 
               <div className="space-y-6">
                 {/* Quiz Info */}
-                <div className="millionaire-card rounded-lg p-4">
-                  <h4 className="millionaire-prize text-lg font-semibold mb-2">
+                <div className="rounded-lg p-4 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+                  <h4 className="text-lg font-semibold mb-2 text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
                     📝 Quiz Information
                   </h4>
                   <p className="text-muted-foreground mb-3">{selectedQuiz.description}</p>
@@ -160,7 +160,7 @@ export function QuizList({ onQuizSelect }: QuizListProps) {
                       }
                     }}
                     trigger={
-                      <Button className="millionaire-button text-lg px-6 py-3 font-bold">
+                      <Button className="text-lg px-6 py-3 font-bold rounded-full [background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]">
                         ➕ ADD QUESTION
                       </Button>
                     }
@@ -180,12 +180,12 @@ export function QuizList({ onQuizSelect }: QuizListProps) {
 
                 {/* Questions List */}
                 <div className="space-y-4">
-                  <h4 className="millionaire-prize text-lg font-semibold">
+                  <h4 className="text-lg font-semibold text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
                     🧠 QUESTIONS ({selectedQuiz.questions.length})
                   </h4>
 
                   {selectedQuiz.questions.length === 0 ? (
-                    <div className="millionaire-card rounded-lg p-6 text-center">
+                    <div className="rounded-lg p-6 text-center [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
                       <p className="text-muted-foreground">
                         No questions added yet. Add your first question to get started!
                       </p>
@@ -193,17 +193,17 @@ export function QuizList({ onQuizSelect }: QuizListProps) {
                   ) : (
                     <div className="space-y-3">
                       {selectedQuiz.questions.map((question, index) => (
-                        <div key={question.id} className="millionaire-card rounded-lg p-4">
+                        <div key={question.id} className="rounded-lg p-4 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
                           <div className="flex items-start justify-between gap-4">
                             <div className="flex-1">
                               <div className="flex items-center gap-3 mb-2">
-                                <span className="millionaire-prize font-bold text-lg">
+                                <span className="font-bold text-lg text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
                                   Q{index + 1}
                                 </span>
-                                <span className="text-xs bg-millionaire-gold/20 px-2 py-1 rounded">
+                                <span className="text-xs px-2 py-1 rounded bg-[hsl(var(--millionaire-gold)/0.2)]">
                                   {question.type === 'image' ? '🖼️ IMAGE' : '📝 TEXT'}
                                 </span>
-                                <span className="text-xs bg-millionaire-blue-light px-2 py-1 rounded">
+                                <span className="text-xs px-2 py-1 rounded bg-[hsl(var(--millionaire-blue-light))]">
                                   ⭐ Level {question.difficulty}
                                 </span>
                               </div>
@@ -212,7 +212,7 @@ export function QuizList({ onQuizSelect }: QuizListProps) {
                                 <img
                                   src={question.imageUrl}
                                   alt="Question"
-                                  className="w-20 h-20 object-cover rounded border-2 border-millionaire-gold/30 mb-2"
+                                  className="w-20 h-20 object-cover rounded border-2 border-[hsl(var(--millionaire-gold)/0.3)] mb-2"
                                 />
                               )}
                               <div className="grid grid-cols-2 gap-2 text-xs">
@@ -222,7 +222,7 @@ export function QuizList({ onQuizSelect }: QuizListProps) {
                                     className={`p-2 rounded ${
                                       answer.isCorrect
                                         ? 'bg-green-600/20 text-green-400'
-                                        : 'bg-millionaire-blue-light/50'
+                                        : 'bg-[hsl(var(--millionaire-blue-light)/0.5)]'
                                     }`}
                                   >
                                     <strong>{String.fromCharCode(65 + answerIndex)}:</strong>{' '}
@@ -242,7 +242,7 @@ export function QuizList({ onQuizSelect }: QuizListProps) {
                                 }
                               }}
                               trigger={
-                                <Button className="millionaire-button px-3 py-2 text-sm">
+                                <Button className="px-3 py-2 text-sm rounded-full [background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]">
                                   ✏️ EDIT
                                 </Button>
                               }
@@ -256,18 +256,18 @@ export function QuizList({ onQuizSelect }: QuizListProps) {
 
                 {/* Prize Structure */}
                 <div className="space-y-4">
-                  <h4 className="millionaire-prize text-lg font-semibold">💰 PRIZE STRUCTURE</h4>
+                  <h4 className="text-lg font-semibold text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">💰 PRIZE STRUCTURE</h4>
                   <div className="grid md:grid-cols-2 gap-3">
                     {selectedQuiz.prizeStructure.map((prize) => (
                       <div
                         key={prize.level}
-                        className={`millionaire-card rounded-lg p-3 flex justify-between items-center ${
+                        className={`rounded-lg p-3 flex justify-between items-center [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)] ${
                           prize.isSafeHaven ? 'ring-2 ring-green-500/50' : ''
                         }`}
                       >
                         <span>Level {prize.level}</span>
                         <div className="flex items-center gap-2">
-                          <span className="millionaire-prize font-bold">${prize.amount}</span>
+                          <span className="font-bold text-[hsl(var(--millionaire-gold))]">${prize.amount}</span>
                           {prize.isSafeHaven && <span className="text-green-400 text-xs">🛡️</span>}
                         </div>
                       </div>

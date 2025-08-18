@@ -21,21 +21,21 @@ function HomePage() {
   };
 
   return (
-    <div className="min-h-screen millionaire-gradient flex items-center justify-center p-4">
+    <div className="min-h-screen [background:linear-gradient(135deg,hsl(var(--millionaire-blue))_0%,hsl(var(--millionaire-blue-light))_50%,hsl(var(--millionaire-blue))_100%)] flex items-center justify-center p-4">
       <div className="max-w-4xl mx-auto text-center space-y-8">
         <div className="space-y-6">
-          <h2 className="millionaire-title text-4xl font-bold mb-4">{t('welcome')} <br />{t('whoWantsToBeMillionaire')}</h2>
+          <h2 className="text-4xl font-bold mb-4 text-transparent bg-clip-text [background-image:linear-gradient(135deg,hsl(var(--millionaire-gold))_0%,hsl(var(--millionaire-gold-light))_50%,hsl(var(--millionaire-gold))_100%)] [text-shadow:0_0_30px_hsl(var(--millionaire-gold)/0.5)]">{t('welcome')} <br />{t('whoWantsToBeMillionaire')}</h2>
           <p className="text-2xl text-muted-foreground mb-8">{t('selectQuiz')}</p>
         </div>
 
-        <div className="millionaire-card rounded-lg p-8 space-y-6">
-          <h2 className="millionaire-prize text-3xl font-bold mb-6">
+        <div className="rounded-lg p-8 space-y-6 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+          <h2 className="text-3xl font-bold mb-6 text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_20px_hsl(var(--millionaire-gold)/0.3)]">
             🏆 {t('welcomeToTheHottestQuizGameOnTheWeb')} 🏆
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8 text-left">
             <div className="space-y-4">
-              <h3 className="millionaire-prize text-xl font-semibold">🎯 {t('howToPlay')}</h3>
+              <h3 className="text-xl font-semibold text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">🎯 {t('howToPlay')}</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li>• {t('answerMultipleChoiceQuestionsCorrectly')}</li>
                 <li>• {t('eachQuestionHasATimeLimit')}</li>
@@ -48,7 +48,7 @@ function HomePage() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="millionaire-prize text-xl font-semibold">💰 {t('dynamicPrizes')}</h3>
+              <h3 className="text-xl font-semibold text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">💰 {t('dynamicPrizes')}</h3>
               <ul className="space-y-2 text-muted-foreground">
                 {quizzes.length > 0 ? (
                   <>
@@ -85,7 +85,7 @@ function HomePage() {
 
         <div className="flex justify-center gap-8 pt-4">
           <Link to="/admin">
-            <Button className="millionaire-button px-6 py-3 text-lg font-semibold">
+            <Button className="px-6 py-3 text-lg font-semibold rounded-full [background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]">
               ⚙️ ADMIN PANEL
             </Button>
           </Link>

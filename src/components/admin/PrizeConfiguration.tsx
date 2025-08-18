@@ -104,13 +104,13 @@ export function PrizeConfiguration({ quizId, currentPrizes, onSuccess }: PrizeCo
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className="millionaire-button text-lg px-8 py-4 font-bold">
+        <Button className="text-lg px-8 py-4 font-bold rounded-full [background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]">
           💰 CONFIGURE PRIZES
         </Button>
       </DialogTrigger>
-      <DialogContent className="millionaire-card max-w-3xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)] text-white">
         <DialogHeader>
-          <DialogTitle className="millionaire-title text-2xl font-bold text-center">
+          <DialogTitle className="text-2xl font-bold text-center text-transparent bg-clip-text [background-image:linear-gradient(135deg,hsl(var(--millionaire-gold))_0%,hsl(var(--millionaire-gold-light))_50%,hsl(var(--millionaire-gold))_100%)] [text-shadow:0_0_30px_hsl(var(--millionaire-gold)/0.5)]">
             💰 PRIZE CONFIGURATION
           </DialogTitle>
         </DialogHeader>
@@ -118,11 +118,11 @@ export function PrizeConfiguration({ quizId, currentPrizes, onSuccess }: PrizeCo
         <form onSubmit={handleSubmit(onSubmit as any)} className="space-y-6">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <Label className="millionaire-prize text-lg font-semibold">Prize Structure</Label>
+              <Label className="text-lg font-semibold text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">Prize Structure</Label>
               <Button
                 type="button"
                 onClick={addPrizeLevel}
-                className="millionaire-button px-4 py-2 text-sm font-bold"
+                className="px-4 py-2 text-sm font-bold rounded-full [background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]"
               >
                 ➕ ADD LEVEL
               </Button>
@@ -130,9 +130,9 @@ export function PrizeConfiguration({ quizId, currentPrizes, onSuccess }: PrizeCo
 
             <div className="space-y-3">
               {fields.map((field, index) => (
-                <div key={field.id} className="millionaire-card rounded-lg p-4">
+                <div key={field.id} className="rounded-lg p-4 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
                   <div className="flex items-center gap-4">
-                    <div className="millionaire-prize font-bold text-lg w-16 text-center">
+                    <div className="font-bold text-lg w-16 text-center text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">
                       Level {index + 1}
                     </div>
 
@@ -141,7 +141,7 @@ export function PrizeConfiguration({ quizId, currentPrizes, onSuccess }: PrizeCo
                       <Input
                         type="number"
                         {...register(`prizeStructure.${index}.amount`)}
-                        className="millionaire-card border-millionaire-gold/30 text-lg p-2"
+                        className="text-lg p-2 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_12px_rgba(0,0,0,0.3)] text-white"
                         min="1"
                       />
                       {errors.prizeStructure?.[index]?.amount && (
@@ -154,10 +154,10 @@ export function PrizeConfiguration({ quizId, currentPrizes, onSuccess }: PrizeCo
                     <Button
                       type="button"
                       onClick={() => toggleSafeHaven(index)}
-                      className={`px-4 py-2 font-bold text-sm ${
+                      className={`px-4 py-2 font-bold text-sm rounded-full ${
                         field.isSafeHaven
                           ? 'bg-green-600 hover:bg-green-700 text-white'
-                          : 'millionaire-button'
+                          : '[background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]'
                       }`}
                     >
                       {field.isSafeHaven ? '🛡️ SAFE HAVEN' : 'Mark Safe Haven'}
@@ -183,8 +183,8 @@ export function PrizeConfiguration({ quizId, currentPrizes, onSuccess }: PrizeCo
             )}
           </div>
 
-          <div className="millionaire-card rounded-lg p-4">
-            <h4 className="millionaire-prize text-lg font-semibold mb-3">🛡️ Safe Haven Levels</h4>
+          <div className="rounded-lg p-4 [background:linear-gradient(135deg,hsl(var(--millionaire-blue-light))_0%,hsl(var(--millionaire-blue))_100%)] border border-[hsl(var(--millionaire-gold)/0.3)] shadow-[0_4px_12px_rgba(0,0,0,0.3)]">
+            <h4 className="text-lg font-semibold mb-3 text-[hsl(var(--millionaire-gold))] [text-shadow:0_0_10px_hsl(var(--millionaire-gold)/0.5)]">🛡️ Safe Haven Levels</h4>
             <p className="text-muted-foreground text-sm mb-2">
               Safe haven levels guarantee that players keep their winnings even if they answer
               incorrectly on subsequent questions.
@@ -194,7 +194,7 @@ export function PrizeConfiguration({ quizId, currentPrizes, onSuccess }: PrizeCo
               {fields
                 .filter((field) => field.isSafeHaven)
                 .map((field, index, arr) => (
-                  <span key={field.id} className="millionaire-prize font-semibold">
+                  <span key={field.id} className="font-semibold text-[hsl(var(--millionaire-gold))]">
                     Level {fields.indexOf(field) + 1} (${field.amount})
                     {index < arr.length - 1 ? ', ' : ''}
                   </span>
@@ -214,7 +214,7 @@ export function PrizeConfiguration({ quizId, currentPrizes, onSuccess }: PrizeCo
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="millionaire-button flex-1 text-lg py-3 font-bold"
+              className="flex-1 text-lg py-3 font-bold rounded-full [background:linear-gradient(135deg,hsl(var(--millionaire-gold-dark))_0%,hsl(var(--millionaire-gold))_50%,hsl(var(--millionaire-gold-light))_100%)] text-[hsl(var(--millionaire-blue))] border-2 border-[hsl(var(--millionaire-gold))] shadow-[0_4px_15px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(0,0,0,0.4)]"
             >
               {isSubmitting ? 'Saving...' : '💾 SAVE PRIZES'}
             </Button>
