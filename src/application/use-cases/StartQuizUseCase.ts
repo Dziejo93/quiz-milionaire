@@ -55,7 +55,7 @@ export class StartQuizUseCase {
         undefined, // Not completed
         0, // No prize amount yet
         0, // No guaranteed amount yet
-        30 // Default time limit
+        180 // Default time limit
       );
 
       await this.sessionRepository.save(gameSession);

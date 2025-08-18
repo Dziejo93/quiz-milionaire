@@ -40,7 +40,7 @@ function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState<AdminQuestion | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showResult, setShowResult] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(30);
+  const [timeLeft, setTimeLeft] = useState(180);
   const [isAnswering, setIsAnswering] = useState(false);
   const [lifelines, setLifelines] = useState<Lifelines>({ fiftyFifty: true, stopTimer: true, callFriend: true });
   const [hiddenAnswers, setHiddenAnswers] = useState<string[]>([]);
@@ -95,7 +95,7 @@ function Quiz() {
 
     setGameState(initialGameState);
     setCurrentQuestion(selectedQuiz.questions?.[0] || null);
-    setTimeLeft(30);
+    setTimeLeft(180);
     setShowResult(false);
     setSelectedAnswer(null);
     setLifelines({ fiftyFifty: true, stopTimer: true, callFriend: true });
@@ -197,7 +197,7 @@ function Quiz() {
         if (!isGameCompleted) {
           // Move to next question
           setCurrentQuestion(selectedQuiz.questions?.[nextQuestionIndex] || null);
-          setTimeLeft(30);
+          setTimeLeft(180);
           setShowResult(false);
           setSelectedAnswer(null);
           setHiddenAnswers([]); // Reset 50:50 for next question

@@ -9,7 +9,7 @@ export class Question {
     public readonly answers: Answer[],
     public readonly correctAnswerId: EntityId,
     public readonly level: number,
-    public readonly timeLimit: number = 30, // seconds
+    public readonly timeLimit: number = 180, // seconds
     public readonly media?: MediaContent
   ) {
     this.validateQuestion();

@@ -20,7 +20,7 @@ export const mockQuizData = {
       text: 'What is the capital of France?',
       type: 'text' as QuestionType,
       order: 1,
-      timeLimit: 30,
+      timeLimit: 180,
       answers: [
         { id: 'a1' as EntityId, text: 'London', isCorrect: false },
         { id: 'a2' as EntityId, text: 'Berlin', isCorrect: false },
@@ -34,7 +34,7 @@ export const mockQuizData = {
       text: 'Which planet is known as the Red Planet?',
       type: 'text' as QuestionType,
       order: 2,
-      timeLimit: 30,
+      timeLimit: 180,
       answers: [
         { id: 'a5' as EntityId, text: 'Venus', isCorrect: false },
         { id: 'a6' as EntityId, text: 'Mars', isCorrect: true },
@@ -48,7 +48,7 @@ export const mockQuizData = {
       text: 'What is 2 + 2?',
       type: 'text' as QuestionType,
       order: 3,
-      timeLimit: 30,
+      timeLimit: 180,
       answers: [
         { id: 'a9' as EntityId, text: '3', isCorrect: false },
         { id: 'a10' as EntityId, text: '4', isCorrect: true },
@@ -62,7 +62,7 @@ export const mockQuizData = {
       text: 'Who wrote "Romeo and Juliet"?',
       type: 'text' as QuestionType,
       order: 4,
-      timeLimit: 30,
+      timeLimit: 180,
       answers: [
         { id: 'a13' as EntityId, text: 'Charles Dickens', isCorrect: false },
         { id: 'a14' as EntityId, text: 'William Shakespeare', isCorrect: true },
@@ -76,7 +76,7 @@ export const mockQuizData = {
       text: 'What is the largest ocean on Earth?',
       type: 'text' as QuestionType,
       order: 5,
-      timeLimit: 30,
+      timeLimit: 180,
       answers: [
         { id: 'a17' as EntityId, text: 'Atlantic Ocean', isCorrect: false },
         { id: 'a18' as EntityId, text: 'Pacific Ocean', isCorrect: true },
